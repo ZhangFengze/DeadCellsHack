@@ -16,7 +16,9 @@
       <Element Offset="92" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000005C" DisplayMethod="Unsigned Integer"/>
       <Element Offset="96" Vartype="Double" Bytesize="8" OffsetHex="00000060" Description="x decimal" DisplayMethod="Unsigned Integer"/>
       <Element Offset="104" Vartype="Double" Bytesize="8" OffsetHex="00000068" Description="y decimal" DisplayMethod="Unsigned Integer"/>
-      <Element Offset="112" Vartype="4 Bytes" Bytesize="4" RLECount="8" OffsetHex="00000070" DisplayMethod="Unsigned Integer"/>
+      <Element Offset="112" Vartype="Double" Bytesize="8" OffsetHex="00000070" Description="x vel" DisplayMethod="Unsigned Integer"/>
+      <Element Offset="120" Vartype="Double" Bytesize="8" OffsetHex="00000078" Description="y vel" DisplayMethod="Unsigned Integer"/>
+      <Element Offset="128" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000080" DisplayMethod="Unsigned Integer"/>
       <Element Offset="144" Vartype="Double" Bytesize="8" OffsetHex="00000090" DisplayMethod="Unsigned Integer"/>
       <Element Offset="152" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000098" DisplayMethod="Unsigned Integer"/>
       <Element Offset="168" Vartype="Double" Bytesize="8" RLECount="4" OffsetHex="000000A8" DisplayMethod="Unsigned Integer"/>
