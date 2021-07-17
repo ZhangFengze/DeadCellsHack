@@ -1,6 +1,8 @@
 #include <BlackBone/Process/Process.h>
+#include <chrono>
 
 using namespace blackbone;
+using namespace std::chrono_literals;
 
 const auto processName = L"deadcells.exe";
 
@@ -37,6 +39,12 @@ int main()
         *playerAddr + 0xFC
         });
     printf("hp value %d\n", *hpValue);
+
+    while (true)
+    {
+        memory.Write(*playerAddr + 0xFC, *hpValue);
+        std::this_thread::sleep_for(1ms);
+    }
 
     return 0;
 }
