@@ -1,5 +1,6 @@
 #include <BlackBone/Process/Process.h>
 #include <chrono>
+#include "structures.h"
 
 using namespace blackbone;
 using namespace std::chrono_literals;
