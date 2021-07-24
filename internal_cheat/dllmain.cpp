@@ -2,8 +2,10 @@
 #include "structures.h"
 #include <BlackBone/Process/Process.h>
 #include <Windows.h>
+#include <chrono>
 
 using namespace blackbone;
+using namespace std::chrono;
 
 DWORD WINAPI OnDllAttach(LPVOID base)
 {
@@ -21,18 +23,27 @@ DWORD WINAPI OnDllAttach(LPVOID base)
     auto& memory = thisProcess.memory();
     auto mainMod = thisProcess.modules().GetMainModule();
 
-    auto [_, gameAddr] = memory.Read<uint32_t>({
-        mainMod->baseAddress + 0x00016904,
-        0x0,
-        0x10,
-        0x454,
-        0x10C,
-        0x0,
-        0x18
-        });
-    ConsolePrint("game addr %0X\n", *gameAddr);
+    while (true)
+    {
+        std::this_thread::sleep_for(1ms);
 
-    Sleep(5000);
+        auto [_, gameAddr] = memory.Read<Game*>({
+            mainMod->baseAddress + 0x00016904,
+            0x0,
+            0x10,
+            0x454,
+            0x10C,
+            0x0,
+            0x18
+            });
+        if (gameAddr && *gameAddr)
+        {
+            Game* game = *gameAddr;
+            game->player->hp = game->player->hp_max;
+        }
+    }
+
+    std::this_thread::sleep_for(5s);
     ReleaseConsole();
     FreeLibraryAndExitThread(static_cast<HMODULE>(base), 1);
     return TRUE;
